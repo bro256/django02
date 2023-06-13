@@ -2,6 +2,6 @@ from rest_framework import generics
 from . import models, serializers
 
 
-class SongReviewList(generics.ListAPIView):
-    queryset = models.SongReview.objects.all()
-    serializer_class = serializers.PostSerializer
+class SongList(generics.ListAPIView):
+    queryset = models.Song.objects.all()
+    serializer_class = serializers.SongSerializer

@@ -76,7 +76,7 @@ class SongReview(models.Model):
         verbose_name_plural = _("song reviews")
 
     def __str__(self):
-        return f"{self.user}, {self.song}, {self.score}"
+        return f"{self.score}, {self.content}"
 
     def get_absolute_url(self):
         return reverse("songreview_detail", kwargs={"pk": self.pk})

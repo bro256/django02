@@ -22,21 +22,21 @@ class SongReviewDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def put(self, request, *args, **kwargs):
-        song_review = models.SongReview.objects.filter(
+        review = models.SongReview.objects.filter(
             pk=kwargs['pk'],
             user=request.user
         )
-        if song_review.exists():
+        if review.exists():
             return self.update(request, *args, **kwargs)
         else:
             raise ValidationError(_('You have no rights to do this'))
         
     def delete(self, request, *args, **kwargs):
-        song_review = models.SongReview.objects.filter(
+        review = models.SongReview.objects.filter(
             pk=kwargs['pk'],
             user=request.user
         )
-        if song_review.exists():
+        if review.exists():
             return self.destroy(request, *args, **kwargs)
         else:
             raise ValidationError(_('You have no rights to do this.'))
@@ -47,12 +47,12 @@ class SongReviewCommentList(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def perform_create(self, serializer):
-        song_review = models.SongReview.objects.get(pk=self.kwargs['review_pk'])
-        serializer.save(user=self.request.user, song_review=song_review)
+        review = models.SongReview.objects.get(pk=self.kwargs['review_pk'])
+        serializer.save(user=self.request.user, review=review)
 
     def get_queryset(self):
-        song_review = models.SongReview.objects.get(pk=self.kwargs['review_pk'])
-        return models.SongReview.objects.filter(song_review=song_review)
+        review = models.SongReview.objects.get(pk=self.kwargs['review_pk'])
+        return models.SongReview.objects.filter(review=review)
 
 
 class SongReviewCommentDetail(generics.RetrieveUpdateDestroyAPIView):

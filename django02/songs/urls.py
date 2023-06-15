@@ -7,4 +7,5 @@ urlpatterns = [
     path('song-reviews/<int:pk>/', views.SongReviewDetail.as_view()),
     path('song-reviews/<int:review_pk>/comments/', views.SongReviewCommentList.as_view()),
     path('comment/<int:pk>/', views.SongReviewCommentDetail.as_view()),
+    # path('<int:pk>/like/', views.SongReviewLikeCreateDestroy.as_view()),
 ]

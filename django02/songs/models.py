@@ -89,7 +89,7 @@ class SongReviewComment(models.Model):
         on_delete=models.CASCADE,
         related_name="song_review_comments"
     ) 
-    song_review=models.ForeignKey(
+    review=models.ForeignKey(
         SongReview,
         verbose_name=_("song review"),
         on_delete=models.CASCADE,
@@ -115,7 +115,7 @@ class SongReviewLike(models.Model):
         on_delete=models.CASCADE,
         related_name="song_review_likes"
     )
-    song_review=models.ForeignKey(
+    review=models.ForeignKey(
         SongReview,
         verbose_name=_("song review"),
         on_delete=models.CASCADE,

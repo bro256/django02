@@ -1,2 +1,1 @@
-# django02
-REST API
+Learning Python Django with REST API. Project: Songs.
